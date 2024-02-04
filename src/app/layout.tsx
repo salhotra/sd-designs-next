@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import clsx from "clsx";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
+import "./globals.css";
 import { josephinSans } from "./fonts";
 import { CompanyName } from "./constants";
 
@@ -20,6 +22,7 @@ export default function RootLayout({
         className={clsx(josephinSans.className, "antialiased scroll-smooth")}
       >
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
