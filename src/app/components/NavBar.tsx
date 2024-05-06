@@ -3,9 +3,15 @@ import Link from "next/link";
 import clsx from "clsx";
 import { playfair } from "../fonts";
 import { MotionValue, motion, useSpring, useTransform } from "framer-motion";
+import Image from "next/image";
+import { HeadingOffsetPx } from "../constants";
 
 export default function NavBar({ scrollY }: { scrollY: MotionValue<number> }) {
-  const scaleXWithoutSpring = useTransform(scrollY, [0, 140], [1, 0]);
+  const scaleXWithoutSpring = useTransform(
+    scrollY,
+    [0, HeadingOffsetPx],
+    [1, 0],
+  );
   const scaleX = useSpring(scaleXWithoutSpring, {
     stiffness: 1000, // Increase stiffness to reduce bounce; adjust as needed
     damping: 50, // Increase damping to quickly reduce motion; adjust as needed
@@ -14,12 +20,18 @@ export default function NavBar({ scrollY }: { scrollY: MotionValue<number> }) {
     restSpeed: 0.001, // Smaller values here also help in reducing the bounce by making the animation settle faster
   });
 
-  const opacity = useTransform(scrollY, [0, 100, 140], [1, 0.8, 0]);
+  const opacity = useTransform(scrollY, [0, 100, HeadingOffsetPx], [1, 0.8, 0]);
 
   return (
     <div>
-      <header className="flex justify-between mx-16 mt-8 pb-6 text-slate-300">
-        <span className={clsx(playfair.className, "text-2xl")}>SD</span>
+      <header className="flex justify-between items-center mx-16 mt-6 pb-6 text-slate-300">
+        <Image
+          src="/logo.svg"
+          alt="Logo"
+          width={45}
+          height={45}
+          className="cursor-pointer"
+        />
         <nav>
           <ul className="flex space-x-12 text-lg">
             <li>
@@ -46,7 +58,7 @@ export default function NavBar({ scrollY }: { scrollY: MotionValue<number> }) {
         </nav>
       </header>
       <motion.div
-        className="h-px bg-slate-300 text-center mx-16"
+        className="h-px bg-slate-300 text-center lg:mx-16 md:mx-0"
         style={{ scaleX, opacity }}
       />
     </div>

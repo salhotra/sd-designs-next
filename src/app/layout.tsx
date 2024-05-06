@@ -6,7 +6,7 @@ import "./globals.css";
 import { josephinSans } from "./fonts";
 import { CompanyName } from "./constants";
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: CompanyName,
   description: `${CompanyName} is an interior design company based in New Delhi.`,
 };
@@ -19,7 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={clsx(josephinSans.className, "antialiased scroll-smooth")}
+        className={clsx(
+          josephinSans.className,
+          "antialiased scroll-smooth hide-scrollbar",
+        )}
       >
         {children}
         <SpeedInsights />
