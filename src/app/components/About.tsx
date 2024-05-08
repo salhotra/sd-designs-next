@@ -5,7 +5,7 @@ import { Button } from "../ui/form/Button";
 
 export default function About() {
   return (
-    <div className="flex flex-col relative">
+    <div className="flex flex-col relative bg-white">
       <div className="flex flex-col z-10 px-20 py-32 items-center">
         <h1 className="xl:text-6xl text-4xl mb-24 mt-4 text-golden-100 text-center">
           FULL SERVICE INTERIOR DESIGN

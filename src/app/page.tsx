@@ -7,6 +7,8 @@ import HomeContent from "./components/HomeContent";
 import { useEffect, useRef, useState } from "react";
 import SmoothScroll from "./components/SmoothScroll";
 import { HeadingOffsetPx } from "./constants";
+import Overlay from "./components/Overlay";
+import Image from "next/image";
 
 function FixedNavBar({
   containerRef,
@@ -58,6 +60,19 @@ export default function Home(): JSX.Element {
       <div className="flex flex-1 flex-col z-10">
         <FixedNavBar containerRef={containerRef} />
         <main>
+          <div className="fixed h-screen w-screen">
+            <Overlay>
+              {/* TODO: Make sure this looks good on slow internet */}
+              <Image
+                priority
+                fill
+                src="/hero-1.jpg"
+                quality={100}
+                alt="Background"
+                className="object-cover"
+              />
+            </Overlay>
+          </div>
           <SmoothScroll>
             <HomeContent />
           </SmoothScroll>
