@@ -35,13 +35,9 @@ export default function HomeContent() {
         </div>
       </div>
 
-      <div className="py-8 h-screen">
-        <About />
-      </div>
+      <About />
 
-      <div className="p-8 h-screen">
-        <Contact />
-      </div>
+      <Contact />
     </div>
   );
 }

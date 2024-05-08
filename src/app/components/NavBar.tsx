@@ -17,6 +17,7 @@ export default function NavBar({ scrollY }: { scrollY: MotionValue<number> }) {
   const [isScrolledPastOffset, setIsScrolledPastOffset] = useState(false);
 
   const variants = {
+    // TODO: These colors are not being managed in a central place
     scrolledPastOffset: { color: "#91867d", translateY: -12 },
     scrolledToTop: { color: "rgb(255, 255, 255)", translateY: 0 },
   };
@@ -50,7 +51,7 @@ export default function NavBar({ scrollY }: { scrollY: MotionValue<number> }) {
         )}
         {isScrolledPastOffset && (
           <Image
-            src="/logo-colored.svg"
+            src="/logo-golden.svg"
             alt="Logo"
             width={45}
             height={45}

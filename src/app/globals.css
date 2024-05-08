@@ -27,6 +27,10 @@ body {
   }
 }
 
-.text-golden {
+.text-golden-100 {
+  color: #bfb3ac;
+}
+
+.text-golden-200 {
   color: #91867d;
 }
