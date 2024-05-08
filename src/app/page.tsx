@@ -24,7 +24,7 @@ function FixedNavBar({
       console.log({ currentScrollY, HeadingOffsetPx });
       if (currentScrollY > HeadingOffsetPx / 2) {
         animationControls.start({ backgroundColor: "rgba(255, 255, 255, 1)" });
-        animationControls.start({ height: "105px" });
+        animationControls.start({ height: "95px" });
       } else {
         animationControls.start({ height: "140px" });
         animationControls.start({ backgroundColor: "rgba(255, 255, 255, 0)" });

@@ -18,7 +18,7 @@ export default function NavBar({ scrollY }: { scrollY: MotionValue<number> }) {
 
   const variants = {
     // TODO: These colors are not being managed in a central place
-    scrolledPastOffset: { color: "#91867d", translateY: -12 },
+    scrolledPastOffset: { color: "#91867d", translateY: -10 },
     scrolledToTop: { color: "rgb(255, 255, 255)", translateY: 0 },
   };
 
