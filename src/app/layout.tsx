@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import "./globals.css";
-import { josephinSans } from "./fonts";
+import { lato } from "./fonts";
 import { CompanyName } from "./constants";
 
 const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={clsx(
-          josephinSans.className,
+          lato.className,
           "antialiased scroll-smooth hide-scrollbar",
         )}
       >

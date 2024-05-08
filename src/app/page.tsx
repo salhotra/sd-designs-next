@@ -1,11 +1,12 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useAnimate, useScroll, useAnimation } from "framer-motion";
 
 import NavBar from "./components/NavBar";
 import HomeContent from "./components/HomeContent";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import SmoothScroll from "./components/SmoothScroll";
+import { HeadingOffsetPx } from "./constants";
 
 function FixedNavBar({
   containerRef,
@@ -13,9 +14,37 @@ function FixedNavBar({
   containerRef: React.RefObject<HTMLDivElement>;
 }): JSX.Element {
   const { scrollY } = useScroll();
+  const animationControls = useAnimation();
+
+  // TODO: Cleanup the hard-coded values
+
+  useEffect(() => {
+    // Register a scroll listener
+    const unsubscribe = scrollY.on("change", (currentScrollY) => {
+      console.log({ currentScrollY, HeadingOffsetPx });
+      if (currentScrollY > HeadingOffsetPx / 2) {
+        animationControls.start({ backgroundColor: "rgba(255, 255, 255, 1)" });
+        animationControls.start({ height: "105px" });
+      } else {
+        animationControls.start({ height: "140px" });
+        animationControls.start({ backgroundColor: "rgba(255, 255, 255, 0)" });
+      }
+    });
+
+    // Clean up the listener when the component unmounts
+    return () => unsubscribe();
+  }, [animationControls, scrollY]);
 
   return (
-    <motion.div className="fixed w-full z-20">
+    <motion.div
+      className="fixed w-full z-20"
+      initial={{
+        backgroundColor: "rgba(255, 255, 255, 0)",
+        height: "120px",
+      }}
+      animate={animationControls}
+      transition={{ duration: 0.2 }}
+    >
       <NavBar scrollY={scrollY} />
     </motion.div>
   );
