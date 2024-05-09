@@ -1,16 +1,22 @@
 import React from "react";
+import Image from "next/image";
+
 import { InputWrapper } from "../ui/form/Input";
 import { Button } from "../ui/form/Button";
 
 export default function Contact() {
   return (
-    <div
-      className="h-[1024px]"
-      style={{
-        backgroundImage: "url('/hero-1.jpg')",
-      }}
-    >
-      <div className="flex flex-col items-center justify-center bg-white px-12 py-8 mt-[512px] h-[512px]">
+    <div>
+      <div className="h-[370px] relative">
+        <Image
+          fill
+          src="/lights.jpg"
+          quality={75}
+          alt="Background"
+          className="object-cover"
+        />
+      </div>
+      <div className="flex flex-col items-center justify-center bg-white px-12 py-8 h-[512px]">
         <h1 className="text-4xl mb-20 uppercase text-golden-200">
           Contact Our Office
         </h1>
