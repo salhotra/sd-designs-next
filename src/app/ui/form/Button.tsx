@@ -30,7 +30,7 @@ export function Button({
       type="submit"
       className={clsx(
         className,
-        "text-xl rounded-full border-1 px-10 py-2.5",
+        "md:text-xl text-lg rounded-full border-1 px-10 py-2.5",
         // Text and background colors
         "text-slate-950",
 
@@ -47,17 +47,19 @@ export function Button({
       whileTap={{ scale: 0.9 }}
       onClick={onClick}
     >
-      {children}
-      {icon && (
-        <span className={clsx("ml-3", iconClassName)}>
-          <FontAwesomeIcon
-            icon={icon}
-            size={iconSize}
-            className={iconClassName}
-            color={iconColor}
-          />
-        </span>
-      )}
+      <div className="flex items-center">
+        {children}
+        {icon && (
+          <span className={clsx("ml-3", iconClassName)}>
+            <FontAwesomeIcon
+              icon={icon}
+              size={iconSize}
+              className={iconClassName}
+              color={iconColor}
+            />
+          </span>
+        )}
+      </div>
     </motion.button>
   );
 }

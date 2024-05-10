@@ -63,7 +63,7 @@ export default function Home(): JSX.Element {
       <div className="flex flex-1 flex-col z-10">
         <FixedNavBar containerRef={containerRef} />
         <main>
-          <div className="fixed h-screen w-screen">
+          <div className="fixed h-screen w-screen md:block hidden">
             <Overlay>
               {/* TODO: Make sure this looks good on slow internet */}
               <Image

@@ -11,7 +11,7 @@ export default function Contact() {
   const formMethods = useForm();
 
   const inputClasses = clsx(
-    "w-full border-1 rounded p-4 mr-4",
+    "w-full border-1 rounded p-4 mr-4 mb-6 md:mb-0",
     "focus:outline-none focus:ring-2 focus:ring-magenta focus:border-transparent",
   );
 
@@ -27,7 +27,7 @@ export default function Contact() {
 
   return (
     <div id="contact-us-section-id">
-      <div className="h-[320px] relative">
+      <div className="md:h-[320px] h-[150px] relative">
         <Overlay intensity="10">
           <Image
             fill
@@ -38,8 +38,8 @@ export default function Contact() {
           />
         </Overlay>
       </div>
-      <div className="flex flex-col items-center justify-center bg-white px-12 py-[100px]">
-        <h1 className="text-4xl mb-20 uppercase text-golden-200">
+      <div className="flex flex-col items-center justify-center bg-white md:px-12 px-8 md:py-[100px] py-[40px]">
+        <h1 className="md:text-4xl text-2xl md:mb-20 mb-8 uppercase text-golden-200">
           Contact Our Office
         </h1>
 
@@ -48,7 +48,7 @@ export default function Contact() {
             className="flex flex-col items-center"
             onSubmit={formMethods.handleSubmit(submitForm)}
           >
-            <div className="flex flex-row w-full">
+            <div className="flex md:flex-row flex-col w-full">
               <InputWrapper required label="Full Name" error={errors.fullName}>
                 <input
                   type="text"
@@ -91,7 +91,7 @@ export default function Contact() {
             <Button
               type="secondary"
               onClick={formMethods.handleSubmit(submitForm)}
-              className="mt-16"
+              className="md:mt-16 mt-4"
             >
               Submit
             </Button>

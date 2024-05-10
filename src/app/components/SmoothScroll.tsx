@@ -6,15 +6,23 @@ import {
   motion,
   useScroll,
   MotionValue,
+  SpringOptions,
 } from "framer-motion";
 
-function useSmoothScroll(pageHeight: number): MotionValue<number> {
+function useSmoothScroll(): MotionValue<number> {
   /* Measures how many pixels user has scrolled vertically
    * as scrollY changes between 0px and the scrollable height.
    */
   const { scrollY } = useScroll();
 
-  const physics = { damping: 15, mass: 0.05, stiffness: 100 };
+  // TODO: Create minimalistic physics that keeps the scroll smooth and very responsive
+  const physics: SpringOptions = {
+    damping: 4,
+    stiffness: 100,
+    mass: 0.05,
+    restDelta: 0.5,
+    restSpeed: 0.1,
+  };
   const spring = useSpring(scrollY, physics);
 
   /**
@@ -62,7 +70,7 @@ function SmoothScroll({
 
   const pageHeight = usePageHeight(containerRef);
 
-  const y = useSmoothScroll(pageHeight);
+  const y = useSmoothScroll();
 
   return (
     <>

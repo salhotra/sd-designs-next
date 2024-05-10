@@ -1,13 +1,51 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { MotionValue, motion, useAnimation } from "framer-motion";
+import {
+  AnimatePresence,
+  MotionValue,
+  motion,
+  useAnimation,
+} from "framer-motion";
 import Image from "next/image";
 import { HeadingOffsetPx } from "../constants";
 import useScrollToId from "../hooks/useScrollToId";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
+
+function MobileMenu({ onClose }: { onClose: () => void }): JSX.Element {
+  return (
+    <motion.div
+      initial={{ translateX: -1000 }}
+      animate={{ translateX: 0 }}
+      transition={{ duration: 0.2 }}
+      className="md:hidden absolute top-0 bottom-0 left-0 right-100 flex flex-col items-center justify-center h-screen bg-white text-golden-200 p-4"
+    >
+      <button onClick={onClose}>
+        <FontAwesomeIcon icon={faClose} size="lg" />
+      </button>
+      <hr className="w-full my-4" />
+      <ul className="flex flex-col space-y-4 text-xl font-semibold">
+        <li>
+          <Link href="/projects">Projects</Link>
+        </li>
+        <li>
+          <Link href="/blog">Blog</Link>
+        </li>
+        <li>
+          <Link href="/#about-us-section-id">About</Link>
+        </li>
+        <li>
+          <Link href="/#contact-us-section-id">Contact</Link>
+        </li>
+      </ul>
+    </motion.div>
+  );
+}
 
 export default function NavBar({ scrollY }: { scrollY: MotionValue<number> }) {
   const animationControls = useAnimation();
   const [isScrolledPastOffset, setIsScrolledPastOffset] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { scrollToId, scrollToTop } = useScrollToId();
 
   const variants = {
@@ -33,7 +71,7 @@ export default function NavBar({ scrollY }: { scrollY: MotionValue<number> }) {
       transition={{ duration: 0.2 }}
       variants={variants}
     >
-      <header className="flex justify-between items-center mx-16 mt-9 pb-6">
+      <header className="flex justify-between md:items-center md:mx-16 mx-8 mt-9 pb-6">
         <div className="cursor-pointer" onClick={() => scrollToTop()}>
           {!isScrolledPastOffset && (
             <Image
@@ -55,7 +93,7 @@ export default function NavBar({ scrollY }: { scrollY: MotionValue<number> }) {
           )}
         </div>
         <nav>
-          <ul className="flex space-x-12 text-xl font-semibold">
+          <ul className="md:flex hidden space-x-12 text-xl font-semibold">
             <li>
               <Link href="/projects">Projects</Link>
             </li>
@@ -80,6 +118,18 @@ export default function NavBar({ scrollY }: { scrollY: MotionValue<number> }) {
             </li>
           </ul>
         </nav>
+
+        {!mobileMenuOpen && (
+          <button className="md:hidden" onClick={() => setMobileMenuOpen(true)}>
+            <FontAwesomeIcon icon={faBars} size="lg" />
+          </button>
+        )}
+
+        {mobileMenuOpen && (
+          <AnimatePresence>
+            <MobileMenu onClose={() => setMobileMenuOpen(false)} />
+          </AnimatePresence>
+        )}
       </header>
     </motion.div>
   );

@@ -10,8 +10,8 @@ export default function About() {
 
   return (
     <div className="flex flex-col relative bg-white" id="about-us-section-id">
-      <div className="flex flex-col z-10 px-20 py-32 items-center">
-        <h1 className="xl:text-6xl text-4xl mb-24 mt-4 text-golden-100 text-center">
+      <div className="flex flex-col z-10 md:px-20 px-8 md:py-32 py-8 items-center">
+        <h1 className="xl:text-6xl mb:text-4xl text-3xl md:mb-24 mb-8 mt-4 text-golden-100 text-center">
           FULL SERVICE INTERIOR DESIGN
           <span className="text-xs mx-4 relative xl:-top-4 -top-2 lg:inline-block hidden">
             •
@@ -39,7 +39,7 @@ export default function About() {
         {/* TODO: This needs to be a primary buttom */}
         <Button
           type="secondary"
-          className="mt-16"
+          className="md:mt-16 mt-4"
           onClick={() => scrollToId("contact-us-section-id")}
           icon={faArrowRightLong}
           iconSize="xs"
