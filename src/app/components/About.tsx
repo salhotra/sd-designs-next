@@ -2,6 +2,7 @@ import clsx from "clsx";
 import React from "react";
 import { playfair } from "../fonts";
 import { Button } from "../ui/form/Button";
+import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 
 export default function About() {
   return (
@@ -33,7 +34,14 @@ export default function About() {
           extraordinary.
         </div>
         {/* TODO: This needs to be a primary buttom */}
-        <Button className="mt-16" onClick={() => ({})}>
+        <Button
+          type="secondary"
+          className="mt-16"
+          onClick={() => ({})}
+          icon={faArrowRightLong}
+          iconSize="xs"
+          iconColor="white"
+        >
           BOOK A CONSULTATION
         </Button>
       </div>

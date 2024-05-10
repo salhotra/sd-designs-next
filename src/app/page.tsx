@@ -1,15 +1,18 @@
 "use client";
 
-import { sql } from "@vercel/postgres";
-import { motion, useAnimate, useScroll, useAnimation } from "framer-motion";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { motion, useScroll, useAnimation } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import NavBar from "./components/NavBar";
 import HomeContent from "./components/HomeContent";
 import SmoothScroll from "./components/SmoothScroll";
 import { HeadingOffsetPx } from "./constants";
 import Overlay from "./components/Overlay";
+
+config.autoAddCss = false;
 
 function FixedNavBar({
   containerRef,

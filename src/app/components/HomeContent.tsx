@@ -4,6 +4,7 @@ import clsx from "clsx";
 import About from "./About";
 import Contact from "./Contact";
 import { Button } from "../ui/form/Button";
+import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 
 export default function HomeContent() {
   return (
@@ -15,8 +16,15 @@ export default function HomeContent() {
             YOUR SPACE DESERVES MORE
           </h1>
 
-          <Button outline className="mt-12" onClick={() => console.log("Book")}>
-            Book Call
+          <Button
+            outline
+            className="mt-12"
+            onClick={() => console.log("Book")}
+            icon={faArrowRightLong}
+            iconSize="xs"
+            iconColor="rgba(2 6 23 / 0.6)"
+          >
+            BOOK A CONSULTATION
           </Button>
         </div>
       </div>

@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+
 import React, { useCallback } from "react";
 import Image from "next/image";
 
@@ -12,7 +15,7 @@ export default function Contact() {
 
   const inputClasses = clsx(
     "w-full border-1 rounded p-4 mr-4",
-    "focus:outline-none focus:ring-4 focus:ring-golden-100 focus:border-transparent",
+    "focus:outline-none focus:ring-2 focus:ring-magenta focus:border-transparent",
   );
 
   const errors = formMethods.formState.errors;
@@ -89,8 +92,9 @@ export default function Contact() {
             </div>
 
             <Button
+              type="secondary"
               onClick={formMethods.handleSubmit(submitForm)}
-              className="my-8 mt-16"
+              className="mt-16"
             >
               Submit
             </Button>

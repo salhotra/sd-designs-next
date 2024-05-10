@@ -19,6 +19,7 @@ const config: Config = {
       colors: {
         "golden-100": "#bfb3ac",
         "golden-200": "#91867d",
+        magenta: "#DA3D77",
       },
     },
   },
