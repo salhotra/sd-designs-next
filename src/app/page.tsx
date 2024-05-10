@@ -1,14 +1,15 @@
 "use client";
 
+import { sql } from "@vercel/postgres";
 import { motion, useAnimate, useScroll, useAnimation } from "framer-motion";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 import NavBar from "./components/NavBar";
 import HomeContent from "./components/HomeContent";
-import { useEffect, useRef, useState } from "react";
 import SmoothScroll from "./components/SmoothScroll";
 import { HeadingOffsetPx } from "./constants";
 import Overlay from "./components/Overlay";
-import Image from "next/image";
 
 function FixedNavBar({
   containerRef,
@@ -23,7 +24,6 @@ function FixedNavBar({
   useEffect(() => {
     // Register a scroll listener
     const unsubscribe = scrollY.on("change", (currentScrollY) => {
-      console.log({ currentScrollY, HeadingOffsetPx });
       if (currentScrollY > HeadingOffsetPx / 2) {
         animationControls.start({ backgroundColor: "rgba(255, 255, 255, 1)" });
         animationControls.start({ height: "95px" });
