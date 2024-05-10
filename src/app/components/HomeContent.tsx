@@ -5,8 +5,11 @@ import About from "./About";
 import Contact from "./Contact";
 import { Button } from "../ui/form/Button";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import useScrollToId from "../hooks/useScrollToId";
 
 export default function HomeContent() {
+  const { scrollToId } = useScrollToId();
+
   return (
     <div className="flex flex-1 flex-col">
       <div className="flex flex-col items-center justify-center h-screen relative">
@@ -17,12 +20,13 @@ export default function HomeContent() {
           </h1>
 
           <Button
-            outline
             className="mt-12"
-            onClick={() => console.log("Book")}
             icon={faArrowRightLong}
             iconSize="xs"
             iconColor="rgba(2 6 23 / 0.6)"
+            onClick={() => {
+              scrollToId("contact-us-section-id");
+            }}
           >
             BOOK A CONSULTATION
           </Button>

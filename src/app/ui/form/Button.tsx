@@ -6,7 +6,6 @@ import React from "react";
 
 interface Props {
   children: string;
-  outline?: boolean;
   className?: string;
   onClick: () => void;
   type?: "primary" | "secondary";
@@ -18,7 +17,6 @@ interface Props {
 
 export function Button({
   children,
-  outline,
   className,
   onClick,
   icon,
@@ -35,7 +33,6 @@ export function Button({
         "text-xl rounded-full border-1 px-10 py-2.5",
         // Text and background colors
         "text-slate-950",
-        !outline && "bg-slate-950",
 
         type === "primary" && "bg-white text-slate-950",
         type === "secondary" && "bg-magenta text-white font-semibold",

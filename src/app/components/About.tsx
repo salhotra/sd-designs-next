@@ -3,10 +3,13 @@ import React from "react";
 import { playfair } from "../fonts";
 import { Button } from "../ui/form/Button";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import useScrollToId from "../hooks/useScrollToId";
 
 export default function About() {
+  const { scrollToId } = useScrollToId();
+
   return (
-    <div className="flex flex-col relative bg-white">
+    <div className="flex flex-col relative bg-white" id="about-us-section-id">
       <div className="flex flex-col z-10 px-20 py-32 items-center">
         <h1 className="xl:text-6xl text-4xl mb-24 mt-4 text-golden-100 text-center">
           FULL SERVICE INTERIOR DESIGN
@@ -37,7 +40,7 @@ export default function About() {
         <Button
           type="secondary"
           className="mt-16"
-          onClick={() => ({})}
+          onClick={() => scrollToId("contact-us-section-id")}
           icon={faArrowRightLong}
           iconSize="xs"
           iconColor="white"

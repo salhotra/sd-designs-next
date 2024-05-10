@@ -1,6 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-
 import React, { useCallback } from "react";
 import Image from "next/image";
 
@@ -29,7 +26,7 @@ export default function Contact() {
   );
 
   return (
-    <div>
+    <div id="contact-us-section-id">
       <div className="h-[320px] relative">
         <Overlay intensity="10">
           <Image

@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import clsx from "clsx";
-import { playfair } from "../fonts";
-import {
-  MotionValue,
-  motion,
-  useAnimation,
-  useSpring,
-  useTransform,
-} from "framer-motion";
+import { MotionValue, motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 import { HeadingOffsetPx } from "../constants";
+import useScrollToId from "../hooks/useScrollToId";
 
 export default function NavBar({ scrollY }: { scrollY: MotionValue<number> }) {
   const animationControls = useAnimation();
   const [isScrolledPastOffset, setIsScrolledPastOffset] = useState(false);
+  const { scrollToId, scrollToTop } = useScrollToId();
 
   const variants = {
     // TODO: These colors are not being managed in a central place
@@ -40,43 +34,47 @@ export default function NavBar({ scrollY }: { scrollY: MotionValue<number> }) {
       variants={variants}
     >
       <header className="flex justify-between items-center mx-16 mt-9 pb-6">
-        {!isScrolledPastOffset && (
-          <Image
-            src="/logo.svg"
-            alt="Logo"
-            width={45}
-            height={45}
-            className="cursor-pointer"
-          />
-        )}
-        {isScrolledPastOffset && (
-          <Image
-            src="/logo-golden.svg"
-            alt="Logo"
-            width={45}
-            height={45}
-            className="cursor-pointer"
-          />
-        )}
+        <div className="cursor-pointer" onClick={() => scrollToTop()}>
+          {!isScrolledPastOffset && (
+            <Image
+              src="/logo.svg"
+              alt="Logo"
+              width={45}
+              height={45}
+              className="cursor-pointer"
+            />
+          )}
+          {isScrolledPastOffset && (
+            <Image
+              src="/logo-golden.svg"
+              alt="Logo"
+              width={45}
+              height={45}
+              className="cursor-pointer"
+            />
+          )}
+        </div>
         <nav>
           <ul className="flex space-x-12 text-xl font-semibold">
             <li>
-              <Link href="#about-us-section-id" scroll>
-                Projects
-              </Link>
+              <Link href="/projects">Projects</Link>
             </li>
             <li>
-              <Link href="#about-us-section-id" scroll>
-                Blog
-              </Link>
+              <Link href="/blog">Blog</Link>
             </li>
             <li>
-              <Link href="#about-us-section-id" scroll>
+              <Link
+                href="/#about-us-section-id"
+                onClick={() => scrollToId("about-us-section-id")}
+              >
                 About
               </Link>
             </li>
             <li>
-              <Link href="#contact-us-section-id" scroll>
+              <Link
+                href="/#contact-us-section-id"
+                onClick={() => scrollToId("contact-us-section-id")}
+              >
                 Contact
               </Link>
             </li>
