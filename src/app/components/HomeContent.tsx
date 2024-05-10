@@ -1,11 +1,12 @@
 import React from "react";
 import clsx from "clsx";
+import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 
 import About from "./About";
 import Contact from "./Contact";
 import { Button } from "../ui/form/Button";
-import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import useScrollToId from "../hooks/useScrollToId";
+import Footer from "./Footer";
 
 export default function HomeContent() {
   const { scrollToId } = useScrollToId();
@@ -36,6 +37,8 @@ export default function HomeContent() {
       <About />
 
       <Contact />
+
+      <Footer />
     </div>
   );
 }

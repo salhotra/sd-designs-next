@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import "./globals.css";
-import { lato } from "./fonts";
+import { montserrat } from "./fonts";
 import { CompanyName } from "./constants";
 
 const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={clsx(
-          lato.className,
+          montserrat.className,
           "antialiased scroll-smooth hide-scrollbar",
         )}
       >
