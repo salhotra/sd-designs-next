@@ -14,11 +14,7 @@ import Overlay from "./components/Overlay";
 
 config.autoAddCss = false;
 
-function FixedNavBar({
-  containerRef,
-}: {
-  containerRef: React.RefObject<HTMLDivElement>;
-}): JSX.Element {
+function FixedNavBar(): JSX.Element {
   const { scrollY } = useScroll();
   const animationControls = useAnimation();
 
@@ -61,7 +57,7 @@ export default function Home(): JSX.Element {
   return (
     <div ref={containerRef} className="flex h-screen">
       <div className="flex flex-1 flex-col z-10">
-        <FixedNavBar containerRef={containerRef} />
+        <FixedNavBar />
         <main>
           <div className="fixed h-screen w-screen md:block hidden">
             <Overlay>
