@@ -11,24 +11,35 @@ import HomeContent from "./components/HomeContent";
 import SmoothScroll from "./components/SmoothScroll";
 import { HeadingOffsetPx } from "./constants";
 import Overlay from "./components/Overlay";
+import { debounce } from "lodash";
 
 config.autoAddCss = false;
 
 function FixedNavBar(): JSX.Element {
   const { scrollY } = useScroll();
   const animationControls = useAnimation();
+  const headerStatus = useRef<"transparent" | "white">("transparent");
 
   // TODO: Cleanup the hard-coded values
 
   useEffect(() => {
     // Register a scroll listener
+
     const unsubscribe = scrollY.on("change", (currentScrollY) => {
-      if (currentScrollY > HeadingOffsetPx / 2) {
+      if (
+        currentScrollY > HeadingOffsetPx / 2 &&
+        headerStatus.current === "transparent"
+      ) {
         animationControls.start({ backgroundColor: "rgba(255, 255, 255, 1)" });
         animationControls.start({ height: "95px" });
-      } else {
+        headerStatus.current = "white";
+      } else if (
+        currentScrollY <= HeadingOffsetPx / 2 &&
+        headerStatus.current === "white"
+      ) {
         animationControls.start({ height: "140px" });
         animationControls.start({ backgroundColor: "rgba(255, 255, 255, 0)" });
+        headerStatus.current = "transparent";
       }
     });
 

@@ -14,6 +14,8 @@ import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
 import SocialLinks from "./SocialLinks";
 
 function MobileMenu({ onClose }: { onClose: () => void }): JSX.Element {
+  const { scrollToId } = useScrollToId();
+
   return (
     <div className="flex flex-1 flex-col justify-between">
       <button className="absolute top-4 right-4" onClick={onClose}>
@@ -35,10 +37,26 @@ function MobileMenu({ onClose }: { onClose: () => void }): JSX.Element {
             <Link href="/blog">Blog</Link>
           </li>
           <li>
-            <Link href="/#about-us-section-id">About</Link>
+            <Link
+              href="/#about-us-section-id"
+              onClick={() => {
+                onClose();
+                scrollToId("about-us-section-id");
+              }}
+            >
+              About
+            </Link>
           </li>
           <li>
-            <Link href="/#contact-us-section-id">Contact</Link>
+            <Link
+              href="/#contact-us-section-id"
+              onClick={() => {
+                onClose();
+                scrollToId("contact-us-section-id");
+              }}
+            >
+              Contact
+            </Link>
           </li>
         </ul>
       </div>
