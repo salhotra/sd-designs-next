@@ -8,10 +8,8 @@ import { useEffect, useRef } from "react";
 
 import NavBar from "./components/NavBar";
 import HomeContent from "./components/HomeContent";
-import SmoothScroll from "./components/SmoothScroll";
-import { HeadingOffsetPx } from "./constants";
+import { HeaderHeightPx, HeadingOffsetPx } from "./constants";
 import Overlay from "./components/Overlay";
-import { debounce } from "lodash";
 
 config.autoAddCss = false;
 
@@ -31,13 +29,13 @@ function FixedNavBar(): JSX.Element {
         headerStatus.current === "transparent"
       ) {
         animationControls.start({ backgroundColor: "rgba(255, 255, 255, 1)" });
-        animationControls.start({ height: "95px" });
+        animationControls.start({ height: 95 });
         headerStatus.current = "white";
       } else if (
         currentScrollY <= HeadingOffsetPx / 2 &&
         headerStatus.current === "white"
       ) {
-        animationControls.start({ height: "140px" });
+        animationControls.start({ height: HeaderHeightPx });
         animationControls.start({ backgroundColor: "rgba(255, 255, 255, 0)" });
         headerStatus.current = "transparent";
       }
@@ -52,7 +50,7 @@ function FixedNavBar(): JSX.Element {
       className="fixed w-full z-20"
       initial={{
         backgroundColor: "rgba(255, 255, 255, 0)",
-        height: "120px",
+        height: HeaderHeightPx,
       }}
       animate={animationControls}
       transition={{ duration: 0.2 }}
@@ -83,9 +81,7 @@ export default function Home(): JSX.Element {
               />
             </Overlay>
           </div>
-          <SmoothScroll>
-            <HomeContent />
-          </SmoothScroll>
+          <HomeContent />
         </main>
       </div>
     </div>

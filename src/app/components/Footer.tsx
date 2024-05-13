@@ -6,10 +6,8 @@ import useScrollToId from "../hooks/useScrollToId";
 import SocialLinks from "./SocialLinks";
 
 function Footer(): JSX.Element {
-  const { scrollToId } = useScrollToId();
-
   const internalLinks = (
-    <ul className="flex w-full md:text-lg text-xs font-semibold items-center justify-between">
+    <ul className="flex w-full md:text-lg text-xs font-semibold items-center md:justify-end md:space-x-4 justify-between">
       <li>
         <Link href="/projects">PROJECTS</Link>
       </li>
@@ -17,26 +15,16 @@ function Footer(): JSX.Element {
         <Link href="/blog">BLOG</Link>
       </li>
       <li>
-        <Link
-          href="/#about-us-section-id"
-          onClick={() => scrollToId("about-us-section-id")}
-        >
-          ABOUT
-        </Link>
+        <Link href="/#about-us-section-id">ABOUT</Link>
       </li>
       <li>
-        <Link
-          href="/#contact-us-section-id"
-          onClick={() => scrollToId("contact-us-section-id")}
-        >
-          CONTACT
-        </Link>
+        <Link href="/#contact-us-section-id">CONTACT</Link>
       </li>
     </ul>
   );
 
   return (
-    <footer>
+    <footer className="relative">
       <div className="flex w-full bg-brown text-white md:p-12 p-8">
         <div className="md:flex hidden flex-1 flex-col">
           <div className="md:flex hidden">

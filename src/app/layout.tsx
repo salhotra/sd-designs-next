@@ -21,7 +21,7 @@ export default function RootLayout({
       <body
         className={clsx(
           montserrat.className,
-          "antialiased scroll-smooth hide-scrollbar",
+          "antialiased scroll-smooth hide-scrollbar overscroll-none",
         )}
       >
         {children}

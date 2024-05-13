@@ -38,7 +38,7 @@ export default function Contact() {
           />
         </Overlay>
       </div>
-      <div className="flex flex-col items-center justify-center bg-white md:px-12 px-8 md:py-[100px] py-[40px]">
+      <div className="flex flex-col items-center justify-center bg-white md:px-12 px-8 md:py-[100px] py-[40px] relative">
         <h1 className="md:text-4xl text-2xl md:mb-20 mb-8 uppercase text-golden-200">
           Contact Our Office
         </h1>
