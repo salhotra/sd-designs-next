@@ -1,3 +1,3 @@
 export const CompanyName = "SD Designs";
 
-export const HeadingOffsetPx = 250;
+export const HeadingOffsetPx = 150;
