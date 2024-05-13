@@ -4,12 +4,14 @@ import { playfair } from "../fonts";
 import { Button } from "../ui/form/Button";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import useScrollToId from "../hooks/useScrollToId";
+import AutoScrollElementWithHeaderOffset from "./AutoScrollElementWithHeaderOffset";
 
 export default function About() {
   const { scrollToId } = useScrollToId();
 
   return (
-    <div className="flex flex-col relative bg-white" id="about-us-section-id">
+    <div className="flex flex-col relative bg-white">
+      <AutoScrollElementWithHeaderOffset id="about-us-section-id" />
       <div className="flex flex-col z-10 md:px-20 px-8 md:py-32 py-8 items-center">
         <h1 className="xl:text-6xl mb:text-4xl text-3xl md:mb-24 mb-8 mt-4 text-golden-100 text-center">
           FULL SERVICE INTERIOR DESIGN
