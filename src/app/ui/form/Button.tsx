@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import React from "react";
+import Loader from "../Loader";
 
 interface Props {
   children: string;
@@ -13,6 +14,7 @@ interface Props {
   iconClassName?: string;
   iconColor?: string;
   iconSize?: SizeProp;
+  loading?: boolean;
 }
 
 export function Button({
@@ -24,6 +26,7 @@ export function Button({
   iconColor,
   iconSize,
   type = "primary",
+  loading = false,
 }: Props): JSX.Element {
   return (
     <motion.button
@@ -44,11 +47,11 @@ export function Button({
           ease: "easeOut",
         },
       }}
-      whileTap={{ scale: 0.9 }}
+      whileTap={{ scale: 1.01 }}
       onClick={onClick}
     >
       <div className="flex items-center">
-        {children}
+        {loading ? <Loader /> : children}
         {icon && (
           <span className={clsx("ml-3", iconClassName)}>
             <FontAwesomeIcon

@@ -1,13 +1,16 @@
-import React, { useCallback } from "react";
+import clsx from "clsx";
 import Image from "next/image";
+import React, { useCallback } from "react";
+import { useForm } from "react-hook-form";
 
 import InputWrapper from "../ui/form/InputWrapper";
 import { Button } from "../ui/form/Button";
-import { useForm } from "react-hook-form";
 import Overlay from "./Overlay";
-import clsx from "clsx";
+import { toast } from "react-toastify";
 
 export default function Contact() {
+  const [loading, setLoading] = React.useState<boolean>(false);
+
   const formMethods = useForm();
 
   const inputClasses = clsx(
@@ -19,8 +22,44 @@ export default function Contact() {
 
   const submitForm = useCallback(
     // TODO: Fix types
-    (data: any) => {
-      console.log({ data, formMethods });
+    async (data: any) => {
+      setLoading(true);
+
+      try {
+        const { fullName, email, phone } = data;
+        const nameParts = fullName.split(" ");
+        const lastName = nameParts.pop();
+        const firstName = nameParts.join(" ");
+
+        const response = await fetch("/api/lead-enquiry", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ firstName, lastName, email, phone }),
+        });
+
+        if (!response.ok) {
+          throw new Error("An error occurred while submitting the form.");
+        }
+
+        toast("Form successfully submitted! We will get back to you soon.", {
+          type: "success",
+          position: "bottom-right",
+        });
+        formMethods.reset();
+      } catch (e) {
+        console.error(e);
+        toast(
+          "An error occurred while submitting the form. Please try again.",
+          {
+            type: "error",
+            position: "bottom-right",
+          },
+        );
+      } finally {
+        setLoading(false);
+      }
     },
     [formMethods],
   );
@@ -70,17 +109,13 @@ export default function Contact() {
                 />
               </InputWrapper>
 
-              <InputWrapper
-                required
-                label="Phone Number"
-                error={errors.phoneNumber}
-              >
+              <InputWrapper required label="Phone Number" error={errors.phone}>
                 <input
                   type="tel"
                   required
                   className={inputClasses}
                   placeholder={"Phone Number"}
-                  {...formMethods.register("phoneNumber", {
+                  {...formMethods.register("phone", {
                     required: true,
                     pattern: /^[0-9]{10}$/,
                   })}
@@ -92,6 +127,7 @@ export default function Contact() {
               type="secondary"
               onClick={formMethods.handleSubmit(submitForm)}
               className="md:mt-16 mt-4"
+              loading={loading}
             >
               Submit
             </Button>

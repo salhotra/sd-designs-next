@@ -5,6 +5,9 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { motion, useScroll, useAnimation } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { ToastContainer } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 import NavBar from "./components/NavBar";
 import HomeContent from "./components/HomeContent";
@@ -67,6 +70,7 @@ export default function Home(): JSX.Element {
     <div ref={containerRef} className="flex h-screen">
       <div className="flex flex-1 flex-col z-10">
         <FixedNavBar />
+        <ToastContainer />
         <main>
           <div className="fixed h-screen w-screen md:block hidden">
             <Overlay>
