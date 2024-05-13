@@ -139,6 +139,7 @@ export default function NavBar({ scrollY }: { scrollY: MotionValue<number> }) {
         </button>
 
         <motion.div
+          initial="closed"
           animate={mobileMenuOpen ? "open" : "closed"}
           transition={{ duration: 0.2 }}
           variants={mobileMenuVariants}
