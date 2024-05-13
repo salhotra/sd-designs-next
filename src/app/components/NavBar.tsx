@@ -43,7 +43,7 @@ function MobileMenu({ onClose }: { onClose: () => void }): JSX.Element {
         </ul>
       </div>
 
-      <SocialLinks size="lg" containerClassName="justify-center" />
+      <SocialLinks size="lg" containerClassName="justify-center mb-16" />
     </div>
   );
 }
