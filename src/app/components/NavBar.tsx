@@ -11,34 +11,40 @@ import { HeadingOffsetPx } from "../constants";
 import useScrollToId from "../hooks/useScrollToId";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
+import SocialLinks from "./SocialLinks";
 
 function MobileMenu({ onClose }: { onClose: () => void }): JSX.Element {
   return (
-    <motion.div
-      initial={{ translateX: -1000 }}
-      animate={{ translateX: 0 }}
-      transition={{ duration: 0.2 }}
-      className="md:hidden absolute top-0 bottom-0 left-0 right-100 flex flex-col items-center justify-center h-screen bg-white text-golden-200 p-4"
-    >
-      <button onClick={onClose}>
+    <div className="flex flex-1 flex-col justify-between">
+      <button className="absolute top-4 right-4" onClick={onClose}>
         <FontAwesomeIcon icon={faClose} size="lg" />
       </button>
-      <hr className="w-full my-4" />
-      <ul className="flex flex-col space-y-4 text-xl font-semibold">
-        <li>
-          <Link href="/projects">Projects</Link>
-        </li>
-        <li>
-          <Link href="/blog">Blog</Link>
-        </li>
-        <li>
-          <Link href="/#about-us-section-id">About</Link>
-        </li>
-        <li>
-          <Link href="/#contact-us-section-id">Contact</Link>
-        </li>
-      </ul>
-    </motion.div>
+      <div>
+        <Image
+          src="/logo.svg"
+          alt="Logo"
+          width={80}
+          height={80}
+          className="cursor-pointer"
+        />
+        <ul className="flex flex-col space-y-6 text-2xl font-semibold mt-16 uppercase">
+          <li>
+            <Link href="/projects">Projects</Link>
+          </li>
+          <li>
+            <Link href="/blog">Blog</Link>
+          </li>
+          <li>
+            <Link href="/#about-us-section-id">About</Link>
+          </li>
+          <li>
+            <Link href="/#contact-us-section-id">Contact</Link>
+          </li>
+        </ul>
+      </div>
+
+      <SocialLinks size="lg" containerClassName="justify-center" />
+    </div>
   );
 }
 
@@ -48,16 +54,25 @@ export default function NavBar({ scrollY }: { scrollY: MotionValue<number> }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { scrollToId, scrollToTop } = useScrollToId();
 
-  const variants = {
+  const headerVariants = {
     // TODO: These colors are not being managed in a central place
     scrolledPastOffset: { color: "#91867d", translateY: -10 },
     scrolledToTop: { color: "rgb(255, 255, 255)", translateY: 0 },
   };
 
+  const mobileMenuVariants = {
+    open: { translateX: 0 },
+    closed: { translateX: -1000 },
+  };
+
   useEffect(() => {
     // Register a scroll listener
     const unsubscribe = scrollY.on("change", (currentScrollY) => {
-      setIsScrolledPastOffset(currentScrollY > HeadingOffsetPx / 2);
+      if (currentScrollY > HeadingOffsetPx / 2) {
+        setIsScrolledPastOffset(true);
+      } else {
+        setIsScrolledPastOffset(false);
+      }
     });
 
     // Clean up the listener when the component unmounts
@@ -69,7 +84,7 @@ export default function NavBar({ scrollY }: { scrollY: MotionValue<number> }) {
       initial={{ color: "rgb(255, 255, 255)" }}
       animate={isScrolledPastOffset ? "scrolledPastOffset" : "scrolledToTop"}
       transition={{ duration: 0.2 }}
-      variants={variants}
+      variants={headerVariants}
     >
       <header className="flex justify-between md:items-center md:mx-16 mx-8 mt-9 pb-6">
         <div className="cursor-pointer" onClick={() => scrollToTop()}>
@@ -119,17 +134,18 @@ export default function NavBar({ scrollY }: { scrollY: MotionValue<number> }) {
           </ul>
         </nav>
 
-        {!mobileMenuOpen && (
-          <button className="md:hidden" onClick={() => setMobileMenuOpen(true)}>
-            <FontAwesomeIcon icon={faBars} size="lg" />
-          </button>
-        )}
+        <button className="md:hidden" onClick={() => setMobileMenuOpen(true)}>
+          <FontAwesomeIcon icon={faBars} size="lg" />
+        </button>
 
-        {mobileMenuOpen && (
-          <AnimatePresence>
-            <MobileMenu onClose={() => setMobileMenuOpen(false)} />
-          </AnimatePresence>
-        )}
+        <motion.div
+          animate={mobileMenuOpen ? "open" : "closed"}
+          transition={{ duration: 0.2 }}
+          variants={mobileMenuVariants}
+          className="md:hidden absolute top-0 bottom-0 left-0 right-100 flex flex-col h-screen w-screen p-4 text-white bg-magenta overflow-hidden"
+        >
+          <MobileMenu onClose={() => setMobileMenuOpen(false)} />
+        </motion.div>
       </header>
     </motion.div>
   );
