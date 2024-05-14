@@ -10,3 +10,4 @@ CREATE TABLE "lead_enquiry" (
 
     CONSTRAINT "lead_enquiry_pkey" PRIMARY KEY ("id")
 );
+
