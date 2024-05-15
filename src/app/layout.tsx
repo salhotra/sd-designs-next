@@ -19,7 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta
+          name="description"
+          content="SD Designs is an Interior Design firm that operates in Delhi, Faridabad, Noida and Gurgaon / Gurugram (NCR). We have the most skilled expert interior designers in Delhi NCR."
+        />
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <title>SD Designs: Interior Designers in Delhi NCR</title>
       </head>
       <body
         className={clsx(
