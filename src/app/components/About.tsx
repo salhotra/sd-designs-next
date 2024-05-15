@@ -11,7 +11,7 @@ export default function About() {
 
   return (
     <div className="flex flex-col relative bg-white">
-      <AutoScrollElementWithHeaderOffset id="about-us-section-id" />
+      <AutoScrollElementWithHeaderOffset id="about" />
       <div className="flex flex-col z-10 md:px-20 px-8 items-center xl:mb-24 xl:mt-24 lg:mb-16 lg:mt-16 mb-8 mt-8">
         <h1 className="xl:text-6xl md:text-4xl text-3xl xl:mb-24 xl:mt-24 lg:mb-16 lg:mt-16 mb-8 mt-8 text-golden-100 text-center">
           FULL SERVICE INTERIOR DESIGN
@@ -38,11 +38,10 @@ export default function About() {
           Let&apos;s transform your space together into something truly
           extraordinary.
         </div>
-        {/* TODO: This needs to be a primary buttom */}
         <Button
           type="secondary"
           className="md:mt-16 mt-4"
-          onClick={() => scrollToId("contact-us-section-id")}
+          onClick={() => scrollToId("contact")}
           icon={faArrowRightLong}
           iconSize="xs"
           iconColor="white"

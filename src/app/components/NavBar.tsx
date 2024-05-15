@@ -36,7 +36,7 @@ function MobileMenu({ onClose }: { onClose: () => void }): JSX.Element {
           </li>
           <li>
             <Link
-              href="/#about-us-section-id"
+              href="/#about"
               onClick={() => {
                 onClose();
               }}
@@ -46,7 +46,7 @@ function MobileMenu({ onClose }: { onClose: () => void }): JSX.Element {
           </li>
           <li>
             <Link
-              href="/#contact-us-section-id"
+              href="/#contact"
               onClick={() => {
                 onClose();
               }}
@@ -130,10 +130,10 @@ export default function NavBar({ scrollY }: { scrollY: MotionValue<number> }) {
               <Link href="/blog">Blog</Link>
             </li>
             <li>
-              <Link href="/#about-us-section-id">About</Link>
+              <Link href="/#about">About</Link>
             </li>
             <li>
-              <Link href="/#contact-us-section-id">Contact</Link>
+              <Link href="/#contact">Contact</Link>
             </li>
           </ul>
         </nav>

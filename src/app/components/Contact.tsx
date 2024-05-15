@@ -65,7 +65,7 @@ export default function Contact() {
   );
 
   return (
-    <div id="contact-us-section-id">
+    <div id="contact">
       <div className="md:h-[320px] h-[150px] relative">
         <Overlay intensity="10">
           <Image

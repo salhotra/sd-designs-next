@@ -14,10 +14,10 @@ function Footer(): JSX.Element {
         <Link href="/blog">BLOG</Link>
       </li>
       <li>
-        <Link href="/#about-us-section-id">ABOUT</Link>
+        <Link href="/#about">ABOUT</Link>
       </li>
       <li>
-        <Link href="/#contact-us-section-id">CONTACT</Link>
+        <Link href="/#contact">CONTACT</Link>
       </li>
     </ul>
   );

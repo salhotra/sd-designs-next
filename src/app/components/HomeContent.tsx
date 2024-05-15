@@ -40,7 +40,7 @@ export default function HomeContent() {
             iconSize="xs"
             iconColor="rgba(2 6 23 / 0.6)"
             onClick={() => {
-              scrollToId("contact-us-section-id");
+              scrollToId("contact");
             }}
           >
             BOOK A CONSULTATION
