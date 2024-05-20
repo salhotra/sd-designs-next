@@ -2,22 +2,22 @@
 
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/form/Button";
-import VideoPlayer from "../ui/Video";
 
 function Projects(): JSX.Element {
   const router = useRouter();
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center">
-      <VideoPlayer
-        url={`//player.vimeo.com/video/948022125`}
-        playing={true}
-        {...{
-          loop: true,
-          height: 500,
-          key: "948022125",
+      <h1 className="text-5xl my-8">Coming Soon!</h1>
+
+      <Button
+        type="secondary"
+        onClick={() => {
+          router.replace("/");
         }}
-      />
+      >
+        Back To Home
+      </Button>
     </div>
   );
 }
