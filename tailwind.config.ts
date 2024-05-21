@@ -21,6 +21,7 @@ const config: Config = {
         "golden-200": "#91867d",
         magenta: "#DA3D77",
         brown: "#93837B",
+        offwhite: "#f4f3ed",
       },
     },
   },

@@ -1,25 +1,38 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { Button } from "../ui/form/Button";
+import React from "react";
+import ProjectListItem from "./components/ProjectListItem";
+import SmoothScroll from "../components/SmoothScroll";
 
-function Projects(): JSX.Element {
-  const router = useRouter();
+const projects = [
+  {
+    id: "01",
+    title: "Kalkaji - New Delhi - Aug 2023",
+    thumbnail: "/kalkaji-hall.webp",
+  },
+  {
+    id: "02",
+    title: "Saket - New Delhi - Oct 2023",
+    thumbnail: "/saket-bedroom-render.webp",
+  },
+];
 
+const PortfolioList: React.FC = () => {
   return (
-    <div className="flex flex-1 flex-col items-center justify-center">
-      <h1 className="text-5xl my-8">Coming Soon!</h1>
-
-      <Button
-        type="secondary"
-        onClick={() => {
-          router.replace("/");
-        }}
-      >
-        Back To Home
-      </Button>
+    <div className="bg-offwhite flex flex-1">
+      <SmoothScroll>
+        {projects.map((item, index) => (
+          <ProjectListItem
+            key={index}
+            index={index}
+            id={item.id}
+            title={item.title}
+            thumbnail={item.thumbnail}
+          />
+        ))}
+      </SmoothScroll>
     </div>
   );
-}
+};
 
-export default Projects;
+export default PortfolioList;
