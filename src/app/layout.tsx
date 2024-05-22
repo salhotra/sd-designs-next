@@ -17,6 +17,7 @@ export default function RootLayout({
           content="SD Designs is an Interior Design firm that operates in Delhi, Faridabad, Noida and Gurgaon / Gurugram (NCR). We have the most skilled expert interior designers in Delhi NCR."
         />
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <title>SD Designs: Best Interior Designers in Delhi NCR</title>
         <meta
           property="og:title"
