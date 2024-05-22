@@ -14,6 +14,7 @@ interface ProjectListItemProps {
   index: number;
   title: string;
   thumbnail: string;
+  isLastItem: boolean;
 }
 
 function SingleImage({
@@ -78,15 +79,18 @@ function ProjectListItem({
   title,
   id,
   thumbnail,
+  isLastItem,
 }: ProjectListItemProps): JSX.Element {
   return (
     <div
       className={clsx(
-        "border-b border-slate-800 lg:mx-8 mx-2 py-2 lg:h-[15vw] h-[30vw]",
+        "border-slate-800 lg:mx-8 mx-2 py-2 lg:h-[15vw] h-[30vw]",
         {
           "lg:pl-0": index % 4 === 0,
           "lg:pl-[25vw]": index % 4 === 1 || index % 4 === 3,
           "lg:pl-[50vw]": index % 4 === 2,
+          "border-t-1": index === 0,
+          "border-b-1": !isLastItem,
         },
       )}
     >
