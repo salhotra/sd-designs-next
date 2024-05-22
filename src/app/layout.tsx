@@ -37,9 +37,9 @@ export default function RootLayout({
               url: "https://sd-designs.in",
               logo: "https://sd-designs.in/favicon.ico",
               sameAs: [
-                "https://www.facebook.com/sd-designs",
-                "https://www.twitter.com/sd-designs",
-                "https://www.instagram.com/sd-designs",
+                "https://www.facebook.com/profile.php?id=61559804181158",
+                "https://twitter.com/SD___Designs",
+                "https://www.instagram.com/sd.designs__",
               ],
             }),
           }}

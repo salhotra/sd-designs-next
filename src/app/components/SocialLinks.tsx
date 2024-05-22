@@ -58,7 +58,7 @@ function SocialLinks({
       <SocialMediaIcon
         size={size}
         icon={faFacebookF}
-        link="https://www.facebook.com"
+        link="https://www.facebook.com/profile.php?id=61559804181158"
       />
       <SocialMediaIcon
         size={size}
@@ -68,7 +68,7 @@ function SocialLinks({
       <SocialMediaIcon
         size={size}
         icon={faLinkedinIn}
-        link="https://www.linkedin.com/in/sd-designs-interior"
+        link="https://www.linkedin.com/company/sddesigns-interiordesign"
       />
       <SocialMediaIcon
         size={size}
