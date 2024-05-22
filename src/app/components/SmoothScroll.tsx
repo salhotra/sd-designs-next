@@ -17,12 +17,11 @@ function useSmoothScroll(): MotionValue<number> {
 
   // TODO: Create minimalistic physics that keeps the scroll smooth and very responsive
   const physics: SpringOptions = {
-    damping: 4,
+    damping: 20,
     stiffness: 100,
-    mass: 0.05,
-    restDelta: 0.5,
-    restSpeed: 0.1,
+    mass: 1,
   };
+
   const spring = useSpring(scrollY, physics);
 
   /**
