@@ -27,22 +27,23 @@ export default function RootLayout({
           name="twitter:title"
           content="SD Designs: Best Interior Designers in Delhi NCR"
         />
-        <script type="application/ld+json">
-          {`
-            {
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "SD Designs",
-              "url": "https://sd-designs.in",
-              "logo": "https://sd-designs.in/favicon.ico",
-              "sameAs": [
+              name: "SD Designs",
+              url: "https://sd-designs.in",
+              logo: "https://sd-designs.in/favicon.ico",
+              sameAs: [
                 "https://www.facebook.com/sd-designs",
                 "https://www.twitter.com/sd-designs",
-                "https://www.instagram.com/sd-designs"
-              ]
-            }
-          `}
-        </script>
+                "https://www.instagram.com/sd-designs",
+              ],
+            }),
+          }}
+        />
       </head>
       <body
         className={clsx(
