@@ -5,9 +5,7 @@ import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 
-import NavBar from "./components/NavBar";
 import HomeContent from "./components/HomeContent";
-import { HeaderHeightPx, HeadingOffsetPx } from "./constants";
 import Overlay from "./components/Overlay";
 import FixedNavBar from "./components/FixedNavbar";
 
@@ -21,13 +19,12 @@ export default function Home(): JSX.Element {
         <ToastContainer />
         <main>
           <div className="fixed h-screen w-screen md:block hidden">
-            <Overlay>
-              {/* TODO: Make sure this looks good on slow internet */}
+            <Overlay intensity="20">
               <Image
                 priority
                 fill
-                src="/hero-1.jpg"
-                quality={100}
+                src="/hero-1.webp"
+                quality={50}
                 alt="Background"
                 className="object-cover"
               />

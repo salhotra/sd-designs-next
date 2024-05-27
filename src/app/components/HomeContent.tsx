@@ -21,13 +21,13 @@ export default function HomeContent() {
           <Image
             fill
             priority
-            src="/hero-1.jpg"
+            src="/hero-1.webp"
             quality={100}
             alt="Background"
             objectFit="cover"
           />
         </div>
-        <div className="md:flex hidden flex-col items-center justify-center z-10 relative">
+        <div className="md:flex hidden flex-col items-center justify-center z-10 relative mb-20">
           <h1
             className={clsx(
               "text-center md:text-6xl text-4xl leading-tight text-white",
