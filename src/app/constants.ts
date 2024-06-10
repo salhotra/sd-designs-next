@@ -1,4 +1,5 @@
 export const CompanyName = "SD Designs";
+export const BlogLink = "https://medium.com/@sddesigns.interior";
 
 /**
  * Number of pixels the user needs to scroll before the header changes color.

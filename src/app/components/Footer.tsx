@@ -3,22 +3,18 @@ import Image from "next/image";
 
 import Link from "next/link";
 import SocialLinks from "./SocialLinks";
+import useNavLinks from "../hooks/useNavLinks";
 
 function Footer(): JSX.Element {
+  const navLinks = useNavLinks();
+
   const internalLinks = (
     <ul className="flex w-full md:text-lg text-xs font-semibold items-center md:justify-end md:space-x-4 justify-between">
-      <li>
-        <Link href="/projects">PROJECTS</Link>
-      </li>
-      <li>
-        <Link href="/blog">BLOG</Link>
-      </li>
-      <li>
-        <Link href="/#about">ABOUT</Link>
-      </li>
-      <li>
-        <Link href="/#contact">CONTACT</Link>
-      </li>
+      {navLinks.map(({ id, title, ...linkProps }) => (
+        <li key={id}>
+          <Link {...linkProps}>{title}</Link>
+        </li>
+      ))}
     </ul>
   );
 

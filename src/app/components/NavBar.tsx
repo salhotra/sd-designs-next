@@ -12,8 +12,20 @@ import useScrollToId from "../hooks/useScrollToId";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
 import SocialLinks from "./SocialLinks";
+import useNavLinks from "../hooks/useNavLinks";
 
 function MobileMenu({ onClose }: { onClose: () => void }): JSX.Element {
+  const navLinks = useNavLinks({
+    overrides: {
+      about: {
+        onClick: onClose,
+      },
+      contact: {
+        onClick: onClose,
+      },
+    },
+  });
+
   return (
     <div className="flex flex-1 flex-col justify-between">
       <button className="absolute top-4 right-4" onClick={onClose}>
@@ -28,32 +40,13 @@ function MobileMenu({ onClose }: { onClose: () => void }): JSX.Element {
           className="cursor-pointer"
         />
         <ul className="flex flex-col space-y-6 text-2xl font-semibold mt-16 uppercase">
-          <li>
-            <Link href="/projects">Projects</Link>
-          </li>
-          <li>
-            <Link href="/blog">Blog</Link>
-          </li>
-          <li>
-            <Link
-              href="/#about"
-              onClick={() => {
-                onClose();
-              }}
-            >
-              About
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/#contact"
-              onClick={() => {
-                onClose();
-              }}
-            >
-              Contact
-            </Link>
-          </li>
+          {navLinks.map(({ id, title, ...linkProps }) => {
+            return (
+              <li key={id}>
+                <Link {...linkProps}>{title}</Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
 
@@ -63,6 +56,7 @@ function MobileMenu({ onClose }: { onClose: () => void }): JSX.Element {
 }
 
 export default function NavBar({ scrollY }: { scrollY: MotionValue<number> }) {
+  const navLinks = useNavLinks();
   const animationControls = useAnimation();
   const [isScrolledPastOffset, setIsScrolledPastOffset] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -123,18 +117,13 @@ export default function NavBar({ scrollY }: { scrollY: MotionValue<number> }) {
         </div>
         <nav>
           <ul className="md:flex hidden space-x-12 text-xl font-semibold">
-            <li>
-              <Link href="/projects">Projects</Link>
-            </li>
-            <li>
-              <Link href="/blog">Blog</Link>
-            </li>
-            <li>
-              <Link href="/#about">About</Link>
-            </li>
-            <li>
-              <Link href="/#contact">Contact</Link>
-            </li>
+            {navLinks.map(({ id, title, ...linkProps }) => {
+              return (
+                <li key={id}>
+                  <Link {...linkProps}>{title}</Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 

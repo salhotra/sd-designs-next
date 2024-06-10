@@ -22,6 +22,7 @@ const config: Config = {
         magenta: "#DA3D77",
         brown: "#93837B",
         offwhite: "#f4f3ed",
+        noir: "#171717",
       },
     },
   },
